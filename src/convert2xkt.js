@@ -95,7 +95,8 @@ function convert2xkt({
                          includeNormals = true,
                          zip = false,
                          log = function (msg) {
-                         }
+                         },
+                         preFinalizeModelCallback = null
                      }) {
 
     stats.sourceFormat = "";
@@ -377,6 +378,9 @@ function convert2xkt({
                 }
 
                 log("Input file parsed OK. Building XKT document...");
+
+                if (preFinalizeModelCallback)
+                    preFinalizeModelCallback(xktModel)
 
                 xktModel.finalize().then(() => {
 
