@@ -95,7 +95,8 @@ function convert2xkt({
                          includeNormals = true,
                          zip = true,
                          log = function (msg) {
-                         }
+                         },
+                         preFinalizeModelCallback = null,
                      }) {
 
     stats.sourceFormat = "";
@@ -370,6 +371,9 @@ function convert2xkt({
         function convert(parser, converterParams) {
 
             parser(converterParams).then(() => {
+
+                if (preFinalizeModelCallback)
+                    preFinalizeModelCallback(xktModel)
 
                 if (!metaModelJSON) {
                     log("Creating default metamodel in XKT");

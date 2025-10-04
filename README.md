@@ -245,7 +245,8 @@ convert2xkt({
     output: "rme_advanced_sample_project.ifc.xkt",
     log: (msg) => {
         console.log(msg)
-    }
+    },
+    preFinalizeModelCallback: (xktModel) => {}
 }).then(() => {
     console.log("Converted.");
 }, (errMsg) => {

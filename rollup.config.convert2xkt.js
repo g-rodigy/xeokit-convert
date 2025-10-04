@@ -1,13 +1,12 @@
 import {nodeResolve} from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import minify from 'rollup-plugin-minify-es';
 
 export default {
-    input: './src/convert2xkt.js',
+    input: './src/convert2xkt',
     output: [
         {
             file: './dist/convert2xkt.cjs.js',
-            include: '/node_modules/',
+            // include: '/node_modules/',
             format: 'cjs',
             name: 'bundle'
         }
@@ -21,6 +20,5 @@ export default {
             preferBuiltins: false
         }),
         commonjs(),
-        minify()
     ]
 }

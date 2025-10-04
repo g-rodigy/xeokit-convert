@@ -5,6 +5,7 @@
   "main": "index.js",
   "bin": "/convert2xkt.js",
   "directories": {},
+  "type": "module",
   "scripts": {
     "build": "npm run build-node && npm run build-browser && rollup --config rollup.config.convert2xkt.js && npm run docs",
     "build-node": "webpack --mode=development --node-env=development --progress",
@@ -61,7 +62,7 @@
     "@babel/preset-env": "^7.17.12",
     "@rollup/plugin-alias": "^3.1.9",
     "@rollup/plugin-commonjs": "^21.1.0",
-    "@rollup/plugin-node-resolve": "^13.2.1",
+    "@rollup/plugin-node-resolve": "^16.0.1",
     "@xeokit/xeokit-sdk": "^2.3.0",
     "auto-changelog": "^2.4.0",
     "babel-loader": "^8.2.5",
@@ -74,7 +75,6 @@
     "rimraf": "^3.0.2",
     "rollup": "^2.70.2",
     "rollup-plugin-copy": "^3.4.0",
-    "rollup-plugin-minify-es": "^1.1.1",
     "typeonly": "^0.4.6",
     "webpack": "^5.72.1",
     "webpack-cli": "^4.9.2",
@@ -84,5 +84,10 @@
     "/dist",
     "/convert2xkt.js",
     "/convert2xkt.conf.js"
-  ]
+  ],
+  "exports": {
+    "./dist/*": {
+      "require": "./dist/*"
+   }
+  }
 }
